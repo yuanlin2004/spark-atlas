@@ -22,3 +22,7 @@ In repository Settings → Pages select **GitHub Actions** as the source. Push t
 ## Editorial policy
 
 Read [CONTRACT.md](CONTRACT.md). Initial articles are deliberately small attributed summaries of official NVIDIA documentation, not benchmark claims, tested recipes, or scraped forum posts. The visible badge records their limitations. Report corrections through issues; include the source link and affected release. NVIDIA marks and source material remain owned by their respective holders. No license to redistribute upstream material is implied.
+
+## UI prototype
+
+The design prototype is served at `/spark-atlas/prototype/` in the local preview and the GitHub Pages build. It uses sample articles and fixture responses. The prototype is a snapshot of the design files in the builder repository under `docs/design/prototype/`.
