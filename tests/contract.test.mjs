@@ -1,0 +1,10 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {validate} from '../scripts/validate.mjs';
+const article=fs.readFileSync('src/content/docs/guides/first-boot.md','utf8');
+test('sample passes',()=>assert.equal(validate(article,'first-boot').revision,1));
+test('rejects missing citation',()=>assert.throws(()=>validate(article.replaceAll('[S1](', '[missing]('),'first-boot')));
+test('rejects mismatched identity',()=>assert.throws(()=>validate(article,'wrong')));
+test('rejects script markup',()=>assert.throws(()=>validate(article+'\n<script>alert(1)</script>','first-boot')));
+test('rejects forum passed as official',()=>assert.throws(()=>validate(article.replace('official-docs','forum'),'first-boot')));
