@@ -14,16 +14,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: npm
-      - run: npm ci
-      - run: npm test
-      - run: npm run build
+      - name: Check the static prototype
+        run: |
+          test -s public/index.html
+          test -s public/prototype/index.html
+          test -s public/prototype/atlas.css
+          test -s public/prototype/cover.svg
+          node --check public/prototype/atlas.js
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: public
   deploy:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build

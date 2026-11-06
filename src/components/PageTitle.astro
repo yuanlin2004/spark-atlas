@@ -1,7 +1,0 @@
----
-import Default from '@astrojs/starlight/components/PageTitle.astro';
-const meta = Astro.locals.starlightRoute.entry.data.atlas;
----
-<Default {...Astro.props} />
-{meta && <aside class="evidence"><strong>{meta.status === 'source-reviewed' ? 'Source reviewed' : 'Community report'}</strong><span>Reviewed {meta.reviewed_at} · {meta.scope}</span><small>Attributed summary · not independently tested on hardware</small></aside>}
-<style>.evidence{border-left:3px solid var(--sl-color-accent);padding:.7rem 1rem;margin-top:1.4rem;background:var(--sl-color-bg-sidebar);display:grid;gap:.25rem}.evidence span,.evidence small{color:var(--sl-color-gray-2)}</style>
